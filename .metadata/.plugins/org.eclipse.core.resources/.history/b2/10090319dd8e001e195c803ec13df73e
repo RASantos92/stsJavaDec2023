@@ -1,0 +1,19 @@
+package com.robert.devoop3;
+
+public class BackEndDev extends Developer {
+	public boolean isLogical;
+
+	public BackEndDev() {
+		super("Anonymous", 25, 100000);
+
+		this.isLogical = true;
+	}
+	
+	public void displayStatus() {
+		super.displayStatus();
+		System.out.println("isLogical: " + this.isLogical);
+	}
+	
+
+
+}

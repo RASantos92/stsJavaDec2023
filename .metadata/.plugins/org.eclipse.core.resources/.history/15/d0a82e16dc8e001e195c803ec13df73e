@@ -1,0 +1,14 @@
+package com.robert.devoop3;
+
+public class BackEndDev extends Developer {
+	public boolean isLogical;
+
+	public BackEndDev() {
+		super("Anonymous");
+		this.setSalary(100000);	
+		this.isLogical = true;
+	}
+	
+
+
+}

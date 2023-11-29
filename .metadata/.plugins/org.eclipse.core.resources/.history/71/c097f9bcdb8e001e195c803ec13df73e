@@ -1,0 +1,12 @@
+package com.robert.devoop3;
+
+public class BackEndDev extends Developer {
+
+	public BackEndDev() {
+		super("Anonymous");
+		this.setSalary(100000);	
+	}
+	
+
+
+}

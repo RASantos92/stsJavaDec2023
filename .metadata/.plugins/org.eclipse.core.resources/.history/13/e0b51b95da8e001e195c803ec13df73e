@@ -1,0 +1,16 @@
+package com.robert.devoop3;
+
+import java.util.ArrayList;
+
+public class Developer {
+	
+    private static int devCount;
+    private static double totalSalary;
+    private String name;
+    private int age;
+    private double salary;
+    private ArrayList<String> languages = new ArrayList<String>();
+
+	public Developer() {}
+
+}
