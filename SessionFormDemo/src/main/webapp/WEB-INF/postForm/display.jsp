@@ -12,5 +12,6 @@
 	<h2>Movie title: <c:out value="${movie }"/></h2>
 	<h2>Movie rating: <c:out value="${rating }"/></h2>
 	<h2>Movie comment: <c:out value="${comment }"/></h2>
+	<h2>Reviewer name: <c:out value="${name }"/></h2>
 </body>
 </html>

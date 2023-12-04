@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -48,7 +49,13 @@ public class HomeController {
 	}
 	
 	@PostMapping("/review/process")
-	public String displayReviewForm(@RequestParam("movie") String movie, @RequestParam("comment") String comment, @RequestParam("rating") Integer rating, HttpSession session) {
+	public String displayReviewForm(@RequestParam("movie") String movie, @RequestParam("comment") String comment, @RequestParam("rating") Integer rating, HttpSession session, RedirectAttributes redirectAttributes,@RequestParam("name") String name) {
+		
+		if(rating <  0  || rating > 5) {
+			redirectAttributes.addFlashAttribute("error", "must be between 0 and 5");
+			return "redirect:/home/review/form";
+		}
+		session.setAttribute("name", name);
 		session.setAttribute("movie", movie);
 		session.setAttribute("comment", comment);
 		session.setAttribute("rating", rating);
