@@ -55,10 +55,25 @@ public class Donation {
 		this.donor = donor;
 		this.quantity = quantity;
 	}
+	
+	
 
 
 
-    public String getDonationName() {
+    public Donation(Long id,
+			@Size(min = 3, max = 255) @NotEmpty(message = "donationName is required") String donationName,
+			@Size(min = 2, max = 50) @NotEmpty(message = "donor name is required") String donor,
+			@Min(0) @NotNull Integer quantity) {
+		super();
+		this.id = id;
+		this.donationName = donationName;
+		this.donor = donor;
+		this.quantity = quantity;
+	}
+
+
+
+	public String getDonationName() {
 		return donationName;
 	}
 

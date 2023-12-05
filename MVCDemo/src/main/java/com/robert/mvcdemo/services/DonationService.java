@@ -1,6 +1,7 @@
 package com.robert.mvcdemo.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -23,5 +24,40 @@ public class DonationService {
 	public Donation create(Donation donation) {
 		return donationRepo.save(donation);
 	}
+	
+	public Donation getOne(Long id) {
+		Optional<Donation> optionalDonation = donationRepo.findById(id);
+//		if(optionalDonation.isPresent()) {
+//			return optionalDonation.get();
+//		}else {
+//			return null;
+//		}
+		return optionalDonation.isPresent() ? optionalDonation.get() : null;
+	}
+	
+	
+	public Donation edit(Donation donation) {
+		return donationRepo.save(donation);
+	}
+	
+	
+	public void delete(Long id) {
+		donationRepo.deleteById(id);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
