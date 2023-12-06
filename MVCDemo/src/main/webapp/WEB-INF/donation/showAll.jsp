@@ -4,11 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="/css/style.css"/>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>All Donations</h1>
+	<h1 class="test">All Donations</h1>
 	<c:forEach items="${allDonations}" var="donation">
 		<p>Donation name: <c:out value="${donation.donationName }"/></p>
 		<p>Donor name: <c:out value="${donation.donor }"/></p>

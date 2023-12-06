@@ -1,9 +1,0 @@
-package com.robert.devoop3;
-
-public class BackEndDev extends Developer {
-
-	public BackEndDev() {
-		// TODO Auto-generated constructor stub
-	}
-
-}
