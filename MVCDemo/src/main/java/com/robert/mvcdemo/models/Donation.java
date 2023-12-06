@@ -11,6 +11,7 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -25,11 +26,11 @@ public class Donation {
 	private Long id;
 	
 	@Size(min=3, max=255)
-	@NotEmpty(message="donationName is required")
+	@NotBlank(message="donationName is required")
 	private String donationName;
 	
 	@Size(min=2, max=50)
-	@NotEmpty(message="donor name is required")
+	@NotBlank(message="donor name is required")
 	private String donor;
 	
 	@Min(0)
@@ -57,9 +58,6 @@ public class Donation {
 	}
 	
 	
-
-
-
     public Donation(Long id,
 			@Size(min = 3, max = 255) @NotEmpty(message = "donationName is required") String donationName,
 			@Size(min = 2, max = 50) @NotEmpty(message = "donor name is required") String donor,

@@ -10,4 +10,6 @@ import com.robert.mvcdemo.models.Donation;
 @Repository
 public interface DonationRepository extends CrudRepository<Donation, Long> {
 	List<Donation> findAll();
+	
+	List<Donation> findByDonationNameContaining(String name);
 }

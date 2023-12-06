@@ -8,4 +8,5 @@
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.util.Optional"/>
     <fullyQualifiedTypeName name="org.springframework.ui.Model"/>
+    <fullyQualifiedTypeName name="jakarta.validation.constraints.NotBlank"/>
 </qualifiedTypeNameHistroy>

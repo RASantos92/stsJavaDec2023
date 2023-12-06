@@ -48,6 +48,15 @@ public class DonationService {
 	
 	
 	
+	// extra method
+	
+	public List<Donation> findByDonationName(String name){
+		return donationRepo.findByDonationNameContaining(name);
+	}
+	
+	
+	
+	
 	
 	
 	

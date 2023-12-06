@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.robert.mvcdemo.models.Donation;
 import com.robert.mvcdemo.services.DonationService;
@@ -27,7 +28,11 @@ public class DonationController {
 	}
 	
 	@GetMapping("/all")
-	public String showAllDonations(Model model) {
+	public String showAllDonations(Model model,@RequestParam(value="searchValue", required=false) String searchValue) {
+		if(searchValue != null) {
+			model.addAttribute("allDonations", donationServ.findByDonationName(searchValue));
+			return "/donation/showAll.jsp";
+		}
 		model.addAttribute("allDonations", donationServ.getAll());
 		return "/donation/showAll.jsp";
 	}
