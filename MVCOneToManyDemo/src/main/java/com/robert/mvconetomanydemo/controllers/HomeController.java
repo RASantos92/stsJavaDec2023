@@ -3,8 +3,11 @@ package com.robert.mvconetomanydemo.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -29,7 +32,9 @@ public class HomeController {
 	}
 	
 	@GetMapping("")
-	public String index() {
+	public String index(Model model) {
+		model.addAttribute("allDonations", donationServ.getAll());
+		model.addAttribute("allUsers", userServ.getAll());
 		return "main/dashboard.jsp";
 	}
 	
@@ -67,8 +72,37 @@ public class HomeController {
 		return "redirect:/home";
 	}
 	
+	@GetMapping("/user/display/{id}")
+	public String displayOneUser(Model model, @PathVariable("id") Long id) {
+		model.addAttribute("user", userServ.getOne(id));
+		return "user/showOne.jsp";
+	}
 	
 	
+	
+	@GetMapping("/donation/edit/{id}")
+	public String editDonation(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("donation", donationServ.getOne(id));
+		return "donation/edit.jsp";
+	}
+	
+	
+	
+	@PatchMapping("/donation/process/edit/{id}")
+	public String processEditDonation(@Valid @ModelAttribute("donation") Donation donation, BindingResult result) {
+		if(result.hasErrors()) {
+			return "donation/edit.jsp";
+		}
+		donationServ.update(donation);
+		return "redirect:/home";
+	}
+	
+	
+	@DeleteMapping("/donation/delete/{id}")
+	public String deleteDonation(@PathVariable("id") Long id) {
+		donationServ.delete(id);
+		return "redirect:/home";
+	}
 	
 	
 	
